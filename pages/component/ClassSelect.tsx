@@ -9,10 +9,12 @@ const ContainerList = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(auto-fill);
   grid-gap: 16px;
-  max-height: 80vh;
+  padding: 16px;
+  max-height: 90vh;
 `
 
-const Child = styled.div``
+const Child = styled.div`
+`
 
 interface ClassSelectProps {
   propClassList: ClassSnapshot[];
