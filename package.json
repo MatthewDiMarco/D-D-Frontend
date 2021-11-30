@@ -29,9 +29,15 @@
     "@storybook/react": "^6.4.0",
     "@types/node": "16.11.10",
     "@types/react": "17.0.37",
+    "@typescript-eslint/eslint-plugin": "^5.5.0",
+    "@typescript-eslint/parser": "^5.5.0",
     "babel-loader": "^8.2.3",
-    "eslint": "7",
     "eslint-config-next": "12.0.4",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.1",
+    "eslint-plugin-react": "^7.27.1",
     "typescript": "4.5.2"
   }
 }
