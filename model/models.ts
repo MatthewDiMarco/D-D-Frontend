@@ -4,6 +4,10 @@ export interface ClassSnapshot {
   classHitDie: number
 };
 
-export interface ClassDetail {
-  // TODO
+export interface Class {
+  className: string,
+  classEndpoint: string,
+  classHitDie: number,
+  classProficiencies: string[],
+  classStartingEquipment: string[]
 };

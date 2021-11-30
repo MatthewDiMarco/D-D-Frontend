@@ -2,11 +2,25 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import styled from '@emotion/styled';
 
-import ClassPage from './component/ClassPage';
+import ClassSelect from './component/ClassSelect';
 import Banner from './component/Banner';
+import ClassDetail from './component/ClassDetail';
 
-const Container = styled.div`
+const ContainerFlex = styled.div`
+  display: flex;
+  gap: 24px;
   margin: 24px;
+`
+
+const ContainerLeft = styled.div`
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border-radius: 5px;
+  padding: 16px;
+  overflow: auto;
+`
+
+const ContainerRight = styled.div`
+  flex-grow: 1;
 `
 
 const Home: NextPage = () => {
@@ -19,22 +33,84 @@ const Home: NextPage = () => {
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
       </Head>
       <Banner/>
-      <Container>
-        <ClassPage
-          propClassList={[
-            {
+      <ContainerFlex>
+        <ContainerLeft>
+          <ClassSelect
+            propClassList={[
+              {
+                className: 'Bard',
+                classEndpoint: '/api/classes/bard',
+                classHitDie: 8
+              },
+              {
+                className: 'Barbarian',
+                classEndpoint: '/api/classes/barbarian',
+                classHitDie: 12
+              },
+              {
+                className: 'Barbarian',
+                classEndpoint: '/api/classes/barbarian',
+                classHitDie: 12
+              },
+              {
+                className: 'Barbarian',
+                classEndpoint: '/api/classes/barbarian',
+                classHitDie: 12
+              },
+              {
+                className: 'Barbarian',
+                classEndpoint: '/api/classes/barbarian',
+                classHitDie: 12
+              },
+              {
+                className: 'Barbarian',
+                classEndpoint: '/api/classes/barbarian',
+                classHitDie: 12
+              },
+              {
+                className: 'Barbarian',
+                classEndpoint: '/api/classes/barbarian',
+                classHitDie: 12
+              },
+              {
+                className: 'Barbarian',
+                classEndpoint: '/api/classes/barbarian',
+                classHitDie: 12
+              },
+              {
+                className: 'Barbarian',
+                classEndpoint: '/api/classes/barbarian',
+                classHitDie: 12
+              },
+              {
+                className: 'Barbarian',
+                classEndpoint: '/api/classes/barbarian',
+                classHitDie: 12
+              },
+              {
+                className: 'Barbarian',
+                classEndpoint: '/api/classes/barbarian',
+                classHitDie: 12
+              }
+            ]}
+          />
+        </ContainerLeft>
+        <ContainerRight>
+          <ClassDetail
+            propClassDetail={{
               className: 'Bard',
               classEndpoint: '/api/classes/bard',
-              classHitDie: 8
-            },
-            {
-              className: 'Barbarian',
-              classEndpoint: '/api/classes/barbarian',
-              classHitDie: 12
-            }
-          ]}
-        />
-      </Container>
+              classHitDie: 8,
+              classProficiencies: [
+                'A', 'B'
+              ],
+              classStartingEquipment: [
+                'A', 'B'
+              ]
+            }}
+          />
+        </ContainerRight>
+      </ContainerFlex>
     </div>
   )
 }
