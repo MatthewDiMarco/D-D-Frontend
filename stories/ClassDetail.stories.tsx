@@ -10,5 +10,20 @@ export default {
 
 const Template: ComponentStory<typeof ClassDetail> = (args) => <ClassDetail {...args} />
 
-export const ClassDetailComponent = Template.bind({});
-ClassDetailComponent.args = {};
+export const ClassDetailWithValues = Template.bind({});
+ClassDetailWithValues.args = {
+  propClassDetail: {
+    className: 'Bard',
+    classEndpoint: '/api/classes/bard',
+    classHitDie: 8,
+    classProficiencies: [
+      'A', 'B'
+    ],
+    classStartingEquipment: [
+      'A', 'B'
+    ]
+  }
+};
+
+export const ClassDetailEmpty = Template.bind({});
+ClassDetailEmpty.args = {};
