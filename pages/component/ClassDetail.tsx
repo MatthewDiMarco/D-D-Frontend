@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import {
-  Box,
-  Modal,
-  Button
+  Modal
 } from '@material-ui/core';
 
 interface ClassDetailProps {};
@@ -12,18 +10,16 @@ const ClassDetail: React.FC<ClassDetailProps> = () => {
 
   return (
     <>
-      <Button 
-        variant="outlined" 
-        onClick={() => setOpen(true)}>
-        Open Modal
-      </Button>
+      <button onClick={() => setOpen(true)}>
+        Class Detail
+      </button>
       <Modal
         open={open}
         onClose={() => setOpen(false)}
       >
-        <Box> 
-          Class Detail Modal Here
-        </Box>
+        <div>
+          Class Detail Modal
+        </div>
       </Modal>
     </>
   );

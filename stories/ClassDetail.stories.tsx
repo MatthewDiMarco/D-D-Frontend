@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory } from '@storybook/react';
 
-import ClassDetail from './ClassDetail';
+import ClassDetail from '../pages/component/ClassDetail';
 
 export default {
   title: "Stories/Class Detail",
