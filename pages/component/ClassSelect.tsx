@@ -13,34 +13,32 @@ const ContainerList = styled.div`
   max-height: 90vh;
 `
 
-const Child = styled.div`
-`
+const Child = styled.div``
 
 interface ClassSelectProps {
+  propHandleSelectClass: (selectedIndex: string) => void;
   propClassList: ClassSnapshot[];
+  propSelectedIndex: string
 };
 
 const ClassSelect: React.FC<ClassSelectProps> = ({ 
+  propHandleSelectClass,
   propClassList,
+  propSelectedIndex
 }) => {
-  const [classList, setClassList] = useState<ClassSnapshot[]>(propClassList);
-  const [classSelectedIdx, setClassSelectedIdx] = useState<number>(-1);
-
-  const handleSelectionChange = (updatedIdx: number) => {
-    setClassSelectedIdx(updatedIdx);
-  };
-
   return (
     <ContainerList>
-      {classList ? classList.map((cls, idx) => {
+      {propClassList.length > 0 ? propClassList.map((cls, idx) => {
         return (
           <Child key={idx}>
             <ClassCard
               propClassName={cls.className}
               propClassHitDie={cls.classHitDie}
               propClassEndpoint={cls.classEndpoint}
-              propSelected={classSelectedIdx === idx ? true : false}
-              propHandleClick={() => handleSelectionChange(idx)}
+              propSelected={propSelectedIndex == cls.classIndex 
+                ? true 
+                : false}
+              propHandleClick={() => propHandleSelectClass(cls.classIndex)}
             />
           </Child>
         );  
