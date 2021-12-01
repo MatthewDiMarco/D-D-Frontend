@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
+import {
+  useQuery,
+  gql
+} from '@apollo/client'
 
 import { Class } from '../../model/models';
 
@@ -36,29 +40,88 @@ const List = styled.ul`
   }
 `
 
+const GET_SELECTED_CLASS_DETAILS = gql`
+  query GetSelectedClass($classIndex: String!) {
+    classes (filter: { index: $classIndex }) {
+      index
+      name
+      hit_die
+      proficiencies {
+        name
+      }
+      starting_equipment {
+        equipment {
+          name
+        }
+      }
+    }
+  }
+`
+
 interface ClassDetailProps {
-  propClassDetails: Class | undefined
+  propClassIndex: string
 };
 
 const ClassDetail: React.FC<ClassDetailProps> = ({ 
-  propClassDetails
+  propClassIndex
 }) => {
+  const [classDetail, setClassDetail] = useState<Class>();
 
-  return propClassDetails ? (
+  console.log('received: ', propClassIndex);
+
+  const {
+    loading
+  } = useQuery(GET_SELECTED_CLASS_DETAILS, {
+    variables: { classIndex: propClassIndex },
+    fetchPolicy: "no-cache",
+    onCompleted: (data) => {
+      setClassDetail(parseSelectedClassDetail(data));
+      console.log('COMPLETE: ', propClassIndex);
+    }
+  });
+
+  const parseSelectedClassDetail = (data: any): Class | undefined => {
+    if (propClassIndex == '') {
+      return undefined;
+    }
+
+    const cls = data.classes[0];
+
+    return {
+      className: cls.name,
+      classHitDie: cls.hit_die,
+      classEndpoint: cls.url,
+      classProficiencies: cls.proficiencies.map((pp: any) => {
+        return pp.name;
+      }),
+      classStartingEquipment: cls.starting_equipment.map((ee: any) => {
+        return ee.equipment.name;
+      })
+    };
+  };
+
+
+  if (loading) return (
     <DetailContainer>
-      <Title>{propClassDetails.className}</Title>
+      <Title>Loading...</Title>
+    </DetailContainer>
+  );
+
+  return classDetail ? (
+    <DetailContainer>
+      <Title>{classDetail.className}</Title>
       <Detail>
         <Label>Hit Die</Label>
-        <Content>{propClassDetails.classHitDie}</Content>
+        <Content>{classDetail.classHitDie}</Content>
       </Detail>
       <Detail>
         <Label>Proficiencies</Label>
         <Content>
           <List>
-            {propClassDetails.classProficiencies.map((prof, idx) => {
+            {classDetail.classProficiencies.map((prof, idx) => {
               return (
-                <li key={idx}>{
-                  prof}
+                <li key={idx}>
+                  {prof}
                 </li>
               );
             })}
@@ -69,7 +132,7 @@ const ClassDetail: React.FC<ClassDetailProps> = ({
         <Label>Starting Equipment</Label>
         <Content>
           <List>
-            {propClassDetails.classStartingEquipment.map((equip, idx) => {
+            {classDetail.classStartingEquipment.map((equip, idx) => {
               return (
                 <li key={idx}>
                   {equip}

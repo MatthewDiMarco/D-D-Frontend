@@ -37,29 +37,9 @@ const GET_CLASSES = gql`
   }
 `
 
-const GET_SELECTED_CLASS_DETAILS = gql`
-  query GetSelectedClass($classIndex: String!) {
-    classes (filter: { index: $classIndex }) {
-      index
-      name
-      hit_die
-      proficiencies {
-        name
-      }
-      starting_equipment {
-        equipment {
-          name
-        }
-      }
-    }
-  }
-`
-
 const LandingScreen: React.FC = () => {
   const [selectedClassIndex, setSelectedClassIndex] = useState<string>('');
   const [classList, setClassList] = useState<ClassSnapshot[]>([]);
-  const [classDetail, setClassDetail] = useState<Class | undefined>(undefined);
-  const [loadingDetail, setLoadingDetail] = useState<boolean>(false);
 
   const { 
     loading: loadingClasses, 
@@ -70,21 +50,6 @@ const LandingScreen: React.FC = () => {
       setClassList(parseClassList(data))
     }
   });
-
-  const {} = useQuery(GET_SELECTED_CLASS_DETAILS, {
-    variables: { classIndex: selectedClassIndex },
-    skip: !loadingDetail,
-    onCompleted: (data) => {
-      setLoadingDetail(false);
-      setClassDetail(parseSelectedClassDetail(data));
-    }
-  });
-
-  const handleSelectClass = (selectedIndex: string) => {
-    setSelectedClassIndex(selectedIndex);
-    setLoadingDetail(true);
-    console.log('set loading true');
-  };
 
   const parseClassList = (data: any): ClassSnapshot[] => {
     return data.classes.map((cls: any, idx: number): ClassSnapshot => {
@@ -97,30 +62,13 @@ const LandingScreen: React.FC = () => {
     });
   };
 
-  const parseSelectedClassDetail = (data: any): Class | undefined => {
-    if (selectedClassIndex == '') {
-      return undefined;
-    }
-
-    const cls = data.classes[0];
-    console.log(cls);
-
-    return {
-      className: cls.name,
-      classHitDie: cls.hit_die,
-      classEndpoint: cls.url,
-      classProficiencies: cls.proficiencies.map((pp: any) => {
-        return pp.name;
-      }),
-      classStartingEquipment: cls.starting_equipment.map((ee: any) => {
-        return ee.equipment.name;
-      })
-    };
+  const handleSelectClass = (selectedIndex: string) => {
+    setSelectedClassIndex(selectedIndex);
   };
 
   if (loadingClasses) return <Loading>Loading...</Loading>
   if (errorClasses) return <div>An unexpected error occured</div>
-
+  
   return (
     <ContainerFlex>
       <ContainerLeft>
@@ -132,7 +80,7 @@ const LandingScreen: React.FC = () => {
       </ContainerLeft>
       <ContainerRight>
         <ClassDetail
-          propClassDetails={classDetail}
+          propClassIndex={selectedClassIndex}
         />
       </ContainerRight>
     </ContainerFlex>
