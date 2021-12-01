@@ -5,9 +5,9 @@ import {
   gql
 } from '@apollo/client'
 
-import ClassDetail from '../component/ClassDetail';
+import ClassDetailContainer from '../component/ClassDetailContainer';
 import ClassSelect from '../component/ClassSelect';
-import { Class, ClassSnapshot } from '../../model/models';
+import { ClassSnapshot } from '../../model/models';
 
 const ContainerFlex = styled.div`
   display: flex;
@@ -79,7 +79,7 @@ const LandingScreen: React.FC = () => {
         />
       </ContainerLeft>
       <ContainerRight>
-        <ClassDetail
+        <ClassDetailContainer
           propClassIndex={selectedClassIndex}
         />
       </ContainerRight>

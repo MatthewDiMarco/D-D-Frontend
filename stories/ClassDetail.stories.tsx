@@ -12,7 +12,7 @@ const Template: ComponentStory<typeof ClassDetail> = (args) => <ClassDetail {...
 
 export const ClassDetailWithValues = Template.bind({});
 ClassDetailWithValues.args = {
-  propClassDetail: {
+  classDetail: {
     className: 'Bard',
     classEndpoint: '/api/classes/bard',
     classHitDie: 8,

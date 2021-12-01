@@ -28,7 +28,7 @@ const ClassSelect: React.FC<ClassSelectProps> = ({
 }) => {
   return (
     <ContainerList>
-      {propClassList.length > 0 ? propClassList.map((cls, idx) => {
+      {propClassList ? propClassList.map((cls, idx) => {
         return (
           <Child key={idx}>
             <ClassCard

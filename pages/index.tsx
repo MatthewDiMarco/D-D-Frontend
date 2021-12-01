@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import styled from '@emotion/styled';
 import {
   ApolloClient,
   InMemoryCache,
