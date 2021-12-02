@@ -59,8 +59,28 @@ const GET_SELECTED_CLASS_DETAILS = gql`
   }
 `
 
+interface ClassBasicDetailType {
+  name: string;
+}
+
+interface ClassStartingEquipmentType {
+  equipment: ClassBasicDetailType; 
+}
+
 interface ClassDetailContainerProps {
   propClassIndex: string
+};
+
+interface ApiClassResponseType {
+  name: string;
+  hit_die: number;
+  url: string
+  proficiencies: ClassBasicDetailType[];
+  starting_equipment: ClassStartingEquipmentType[];
+};
+
+interface ApiDataResponseType {
+  classes: ApiClassResponseType[];
 };
 
 const ClassDetailContainer: React.FC<ClassDetailContainerProps> = ({ 
@@ -78,7 +98,7 @@ const ClassDetailContainer: React.FC<ClassDetailContainerProps> = ({
     }
   });
 
-  const parseSelectedClassDetailContainer = (data: any): Class | undefined => {
+  const parseSelectedClassDetailContainer = (data: ApiDataResponseType): Class | undefined => {
     if (propClassIndex == '') {
       return undefined;
     }
@@ -88,10 +108,10 @@ const ClassDetailContainer: React.FC<ClassDetailContainerProps> = ({
       className: cls.name,
       classHitDie: cls.hit_die,
       classEndpoint: cls.url,
-      classProficiencies: cls.proficiencies.map((pp: any) => {
+      classProficiencies: cls.proficiencies.map((pp: ClassBasicDetailType) => {
         return pp.name;
       }),
-      classStartingEquipment: cls.starting_equipment.map((ee: any) => {
+      classStartingEquipment: cls.starting_equipment.map((ee: ClassStartingEquipmentType) => {
         return ee.equipment.name;
       })
     };

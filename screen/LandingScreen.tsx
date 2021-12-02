@@ -37,6 +37,17 @@ const GET_CLASSES = gql`
   }
 `
 
+interface ApiClassSnapshotType {
+  index: string;
+  name: string;
+  hit_die: number;
+  url: string;
+};
+
+interface ApiDataResponseType {
+  classes: ApiClassSnapshotType[];
+};
+
 const LandingScreen: React.FC = () => {
   const [selectedClassIndex, setSelectedClassIndex] = useState<string>('');
   const [classList, setClassList] = useState<ClassSnapshot[]>([]);
@@ -51,8 +62,8 @@ const LandingScreen: React.FC = () => {
     }
   });
 
-  const parseClassList = (data: any): ClassSnapshot[] => {
-    return data.classes.map((cls: any, idx: number): ClassSnapshot => {
+  const parseClassList = (data: ApiDataResponseType): ClassSnapshot[] => {
+    return data.classes.map((cls: ApiClassSnapshotType, idx: number): ClassSnapshot => {
       return {
         classIndex: cls.index,
         className: cls.name,
