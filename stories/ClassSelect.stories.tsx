@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory } from '@storybook/react';
 
-import ClassSelect from '../pages/component/ClassSelect';
+import ClassSelect from '../component/ClassSelect';
 
 export default {
   title: "Stories/Class Select",

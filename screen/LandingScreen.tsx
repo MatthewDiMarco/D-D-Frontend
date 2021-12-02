@@ -7,7 +7,7 @@ import {
 
 import ClassDetailContainer from '../component/ClassDetailContainer';
 import ClassSelect from '../component/ClassSelect';
-import { ClassSnapshot } from '../../model/models';
+import { ClassSnapshot } from '../model/models';
 
 const ContainerFlex = styled.div`
   display: flex;

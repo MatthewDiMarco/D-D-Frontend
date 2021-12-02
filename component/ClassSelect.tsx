@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 
 import ClassCard from './ClassCard';
-import { ClassSnapshot } from '../../model/models';
+import { ClassSnapshot } from '../model/models';
 
 const ContainerList = styled.div`
   display: grid;

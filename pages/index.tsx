@@ -6,8 +6,8 @@ import {
   ApolloProvider
 } from '@apollo/client';
 
-import Banner from './component/Banner';
-import LandingScreen from './screen/LandingScreen';
+import Banner from '../component/Banner';
+import LandingScreen from '../screen/LandingScreen';
 
 const client = new ApolloClient({
   uri: "https://www.dnd5eapi.co/graphql",

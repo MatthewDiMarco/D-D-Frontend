@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-import { Class } from '../../model/models';
+import { Class } from '../model/models';
 
 const DetailContainer = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);

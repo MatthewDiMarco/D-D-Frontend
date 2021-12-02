@@ -5,7 +5,7 @@ import {
   gql
 } from '@apollo/client'
 
-import { Class } from '../../model/models';
+import { Class } from '../model/models';
 import ClassDetail from './ClassDetail';
 
 const DetailContainer = styled.div`
