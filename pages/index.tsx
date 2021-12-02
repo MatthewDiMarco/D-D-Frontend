@@ -1,22 +1,18 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import styled from '@emotion/styled';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider
+} from '@apollo/client';
 
-import ClassSelect from './component/ClassSelect';
-import Banner from './component/Banner';
-import ClassDetail from './component/ClassDetail';
+import Banner from '../component/Banner';
+import LandingScreen from '../screen/LandingScreen';
 
-const ContainerFlex = styled.div`
-  display: flex;
-`
-
-const ContainerLeft = styled.div`
-  overflow: auto;
-`
-
-const ContainerRight = styled.div`
-  flex-grow: 1;
-`
+const client = new ApolloClient({
+  uri: "https://www.dnd5eapi.co/graphql",
+  cache: new InMemoryCache()
+});
 
 const Home: NextPage = () => {
   return (
@@ -28,84 +24,9 @@ const Home: NextPage = () => {
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
       </Head>
       <Banner/>
-      <ContainerFlex>
-        <ContainerLeft>
-          <ClassSelect
-            propClassList={[
-              {
-                className: 'Bard',
-                classEndpoint: '/api/classes/bard',
-                classHitDie: 8
-              },
-              {
-                className: 'Barbarian',
-                classEndpoint: '/api/classes/barbarian',
-                classHitDie: 12
-              },
-              {
-                className: 'Barbarian',
-                classEndpoint: '/api/classes/barbarian',
-                classHitDie: 12
-              },
-              {
-                className: 'Barbarian',
-                classEndpoint: '/api/classes/barbarian',
-                classHitDie: 12
-              },
-              {
-                className: 'Barbarian',
-                classEndpoint: '/api/classes/barbarian',
-                classHitDie: 12
-              },
-              {
-                className: 'Barbarian',
-                classEndpoint: '/api/classes/barbarian',
-                classHitDie: 12
-              },
-              {
-                className: 'Barbarian',
-                classEndpoint: '/api/classes/barbarian',
-                classHitDie: 12
-              },
-              {
-                className: 'Barbarian',
-                classEndpoint: '/api/classes/barbarian',
-                classHitDie: 12
-              },
-              {
-                className: 'Barbarian',
-                classEndpoint: '/api/classes/barbarian',
-                classHitDie: 12
-              },
-              {
-                className: 'Barbarian',
-                classEndpoint: '/api/classes/barbarian',
-                classHitDie: 12
-              },
-              {
-                className: 'Barbarian',
-                classEndpoint: '/api/classes/barbarian',
-                classHitDie: 12
-              }
-            ]}
-          />
-        </ContainerLeft>
-        <ContainerRight>
-          <ClassDetail
-            propClassDetail={{
-              className: 'Bard',
-              classEndpoint: '/api/classes/bard',
-              classHitDie: 8,
-              classProficiencies: [
-                'A', 'B'
-              ],
-              classStartingEquipment: [
-                'A', 'B'
-              ]
-            }}
-          />
-        </ContainerRight>
-      </ContainerFlex>
+      <ApolloProvider client={client}>
+        <LandingScreen/>
+      </ApolloProvider>
     </div>
   )
 }

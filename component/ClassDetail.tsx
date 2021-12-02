@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 
-import { Class } from '../../model/models';
+import { Class } from '../model/models';
 
 const DetailContainer = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   border-radius: 5px;
   padding: 36px 36px 0 36px;
-  height: 100%;
+  height: 90vh;
 `
 
 const Title = styled.div`
@@ -37,30 +37,28 @@ const List = styled.ul`
 `
 
 interface ClassDetailProps {
-  propClassDetail: Class
+  classDetail: Class | undefined
 };
 
-const ClassDetail: React.FC<ClassDetailProps> = ({ propClassDetail }) => {
-  const [classDetails, setClassDetails] = useState<Class>(propClassDetail);
-
-  const view = classDetails ? (
-    <DetailContainer>
-      <Title>Class Detail</Title>
-      <Detail>
-        <Label>Class Name</Label>
-        <Content>{classDetails.className}</Content>
-      </Detail>
+const ClassDetail: React.FC<ClassDetailProps> = ({ 
+  classDetail
+}) => {
+  return classDetail ? (
+    <>
+      <Title>{classDetail.className}</Title>
       <Detail>
         <Label>Hit Die</Label>
-        <Content>{classDetails.classHitDie}</Content>
+        <Content>{classDetail.classHitDie}</Content>
       </Detail>
       <Detail>
         <Label>Proficiencies</Label>
         <Content>
           <List>
-            {classDetails.classProficiencies.map(prof => {
+            {classDetail.classProficiencies.map((prof, idx) => {
               return (
-                <li key={prof}>{prof}</li>
+                <li key={idx}>
+                  {prof}
+                </li>
               );
             })}
           </List>
@@ -70,21 +68,19 @@ const ClassDetail: React.FC<ClassDetailProps> = ({ propClassDetail }) => {
         <Label>Starting Equipment</Label>
         <Content>
           <List>
-            {classDetails.classStartingEquipment.map(equip => {
+            {classDetail.classStartingEquipment.map((equip, idx) => {
               return (
-                <li key={equip}>{equip}</li>
+                <li key={idx}>
+                  {equip}
+                </li>
               );
             })}
           </List>
         </Content>
       </Detail>
-    </DetailContainer>
-  ) : 
-  <DetailContainer>
-    <Detail>Select a class</Detail>
-  </DetailContainer>
-
-  return view;
+    </>
+  ) :
+  <Title>No Class Selected</Title>;
 };
 
 export default ClassDetail;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory } from '@storybook/react';
 
-import ClassSelect from '../pages/component/ClassSelect';
+import ClassSelect from '../component/ClassSelect';
 
 export default {
   title: "Stories/Class Select",
@@ -11,17 +11,19 @@ export default {
 const Template: ComponentStory<typeof ClassSelect> = (args) => <ClassSelect {...args} />
 
 export const ClassSelectEmpty = Template.bind({});
-ClassSelectEmpty.args = {};
+ClassSelectEmpty.args = {propClassList: []};
 
 export const ClassSelectTwoClasses = Template.bind({});
 ClassSelectTwoClasses.args = {
   propClassList: [
     {
+      classIndex: 'bard',
       className: 'Bard',
       classEndpoint: '/api/classes/bard',
       classHitDie: 8
     },
     {
+      classIndex: 'barbarian',
       className: 'Barbarian',
       classEndpoint: '/api/classes/barbarian',
       classHitDie: 12

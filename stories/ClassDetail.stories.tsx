@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory } from '@storybook/react';
 
-import ClassDetail from '../pages/component/ClassDetail';
+import ClassDetail from '../component/ClassDetail';
 
 export default {
   title: "Stories/Class Detail",
@@ -12,7 +12,7 @@ const Template: ComponentStory<typeof ClassDetail> = (args) => <ClassDetail {...
 
 export const ClassDetailWithValues = Template.bind({});
 ClassDetailWithValues.args = {
-  propClassDetail: {
+  classDetail: {
     className: 'Bard',
     classEndpoint: '/api/classes/bard',
     classHitDie: 8,

@@ -53,10 +53,6 @@ const ClassCard: React.FC<ClassCardProps> = ({
   propSelected,
   propHandleClick
 }) => {
-  const [className, setClassName] = useState<string>(propClassName);
-  const [classHitDie, setHitDie] = useState<number>(propClassHitDie);
-  const [classEndpoint, setClassEndpoint] = useState<string>(propClassEndpoint);
-
   return (
     <Card
       onClick={propHandleClick}
@@ -64,9 +60,9 @@ const ClassCard: React.FC<ClassCardProps> = ({
         background: ${propSelected ? css`#f1f1f1;` : css`0`};
       `}
     >
-      <CardClassHitDue><p>{classHitDie ? classHitDie : -1}</p></CardClassHitDue>
-      <CardClassName>{className ? className : 'class name undefined'}</CardClassName>
-      <CardClassUrl>{classEndpoint}</CardClassUrl>
+      <CardClassHitDue><p>{propClassHitDie ? propClassHitDie : -1}</p></CardClassHitDue>
+      <CardClassName>{propClassName ? propClassName : 'class name undefined'}</CardClassName>
+      <CardClassUrl>{propClassEndpoint}</CardClassUrl>
     </Card>
   );
 };

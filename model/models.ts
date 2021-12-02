@@ -1,4 +1,5 @@
 export interface ClassSnapshot {
+  classIndex: string,
   className: string,
   classEndpoint: string,
   classHitDie: number
