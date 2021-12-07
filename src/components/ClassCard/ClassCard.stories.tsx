@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory } from '@storybook/react';
 
-import ClassCard from '../component/ClassCard';
+import ClassCard from '.';
 
 export default {
   title: "Stories/Class Card",

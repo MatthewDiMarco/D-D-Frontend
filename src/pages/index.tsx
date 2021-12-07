@@ -6,8 +6,8 @@ import {
   ApolloProvider
 } from '@apollo/client';
 
-import Banner from '../component/Banner';
-import LandingScreen from '../screen/LandingScreen';
+import Banner from '../components/Banner';
+import ClassSelectorScreen from '../screens/ClassSelectorScreen';
 
 const client = new ApolloClient({
   uri: 'https://www.dnd5eapi.co/graphql',
@@ -24,7 +24,7 @@ const Home: NextPage = () => {
       </Head>
       <Banner/>
       <ApolloProvider client={client}>
-        <LandingScreen/>
+        <ClassSelectorScreen/>
       </ApolloProvider>
     </div>
   )

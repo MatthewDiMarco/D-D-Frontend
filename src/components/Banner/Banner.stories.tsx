@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory } from '@storybook/react';
 
-import Banner from '../component/Banner';
+import Banner from '.';
 
 export default {
   title: "Stories/Banner",
