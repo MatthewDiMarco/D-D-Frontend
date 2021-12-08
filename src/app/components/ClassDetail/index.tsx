@@ -39,7 +39,7 @@ const List = styled.ul`
 
 interface ClassDetailProps {
   classDetail: Class | undefined
-  customTitle: string
+  customTitle: any
 };
 
 const ClassDetail: React.FC<ClassDetailProps> = ({ 

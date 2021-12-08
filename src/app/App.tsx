@@ -8,7 +8,6 @@ import {
 
 import Banner from './components/Banner';
 import ClassSelect from './layouts/ClassSelect';
-import CharacterSelect from './layouts/CharacterSelect';
 import AboutLayout from './layouts/About';
 
 const client = new ApolloClient({
@@ -22,7 +21,6 @@ const App = () => {
       <Banner />
       <Routes>
         <Route path="/" element={<ClassSelect />} />
-        <Route path="/character" element={<CharacterSelect />} />
         <Route path="/about" element={<AboutLayout />} />
       </Routes>
     </ApolloProvider>

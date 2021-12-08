@@ -87,7 +87,7 @@ const ClassSelect: React.FC<ClassSelectLayoutProps> = () => {
     data: dataDetail
   } = useQuery<GetSelectedClassDetailsResponseType>(GET_SELECTED_CLASS_DETAILS, {
     variables: { classIndex: selectedClassIndex },
-    fetchPolicy: "no-cache"
+    fetchPolicy: 'no-cache'
   });
 
   if (loadingClasses) return <Info>Loading...</Info>
@@ -112,8 +112,8 @@ const ClassSelect: React.FC<ClassSelectLayoutProps> = () => {
       </ContainerLeft>
       <ContainerRight>
         {loadingDetail 
-          ? <ClassDetail classDetail={undefined} customTitle='Loading...' />
-          : <ClassDetail classDetail={dataDetail?.classes[0]} customTitle='No Class Selected' />}
+          ? <ClassDetail classDetail={undefined} customTitle="Loading..." />
+          : <ClassDetail classDetail={dataDetail?.classes[0]} customTitle="No Class Selected" />}
       </ContainerRight>
     </ContainerFlex>
   );

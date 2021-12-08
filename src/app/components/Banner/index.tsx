@@ -39,7 +39,6 @@ const Banner: React.FC<BannerProps> = () => {
       <LinkTitle href="/">Spell Casting App</LinkTitle>
       <HeaderRight>
         <Link href="/" css={Link}>Home</Link>
-        <Link href="/character" css={Link}>Character</Link>
         <Link href="/about" css={Link}>About</Link>
       </HeaderRight>
     </Header>
