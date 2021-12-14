@@ -1,0 +1,9 @@
+{
+  "component": {
+    "testFiles": "**/*.test.{js,ts,jsx,tsx}",
+    "componentFolder": "src"
+  },
+  "compilerOptions": {
+    "types": ["cypress", "cypress-react-router"]
+  }
+}

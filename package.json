@@ -40,8 +40,14 @@
         ],
         "rules": {
           "import/no-anonymous-default-export": "off",
-          "jsx-quotes": ["error", "prefer-double"],
-          "quotes": ["error", "single"]
+          "jsx-quotes": [
+            "error",
+            "prefer-double"
+          ],
+          "quotes": [
+            "error",
+            "single"
+          ]
         }
       }
     ]
@@ -59,11 +65,14 @@
     ]
   },
   "devDependencies": {
+    "@cypress/react": "^5.10.3",
+    "@cypress/webpack-dev-server": "^1.7.0",
     "@storybook/addon-actions": "^6.4.8",
     "@storybook/addon-essentials": "^6.4.8",
     "@storybook/addon-links": "^6.4.8",
     "@storybook/node-logger": "^6.4.8",
-    "@storybook/react": "^6.4.8"
+    "@storybook/react": "^6.4.8",
+    "cypress": "^9.1.1"
   },
   "resolutions": {
     "babel-loader": "8.1.0"
