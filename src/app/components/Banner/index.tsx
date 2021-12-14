@@ -36,7 +36,7 @@ interface BannerProps {};
 const Banner: React.FC<BannerProps> = () => {
   return (
     <Header>
-      <LinkTitle href="/">Spell Casting App</LinkTitle>
+      <LinkTitle href="/">DnD App</LinkTitle>
       <HeaderRight>
         <Link href="/" css={Link}>Home</Link>
         <Link href="/about" css={Link}>About</Link>
