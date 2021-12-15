@@ -11,8 +11,11 @@ const Card = styled.div`
   padding: 24px;
 
   :hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     transform: scale(1.05);
+  }
+
+  :hover, :focus {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   }
 `
 
@@ -52,6 +55,8 @@ const ClassCard: React.FC<ClassCardProps> = ({
 }) => {
   return (
     <Card
+      tabIndex={0}
+      onFocusCapture={propClassSnapshot ? () => propHandleClick(propClassSnapshot.index) : undefined} 
       onClick={propClassSnapshot ? () => propHandleClick(propClassSnapshot.index) : undefined}
       className={css`
         background: ${propSelected ? css`#f1f1f1;` : css`0`};
