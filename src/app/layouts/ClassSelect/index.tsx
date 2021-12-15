@@ -16,6 +16,10 @@ const ContainerFlexVertical = styled.div`
 const ContainerFlexHorizontal = styled.div`
   display: flex;
   flex-direction: row;
+
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+  }
 `
 
 const ContainerLeft = styled.div`
@@ -34,6 +38,13 @@ const ContainerGridList = styled.div`
   grid-gap: 24px;
   padding: 16px;
   max-height: 90vh;
+
+  @media screen and (max-width: 600px) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: stretch;
+  }
 `
 
 const ContainerDetail = styled.div`
