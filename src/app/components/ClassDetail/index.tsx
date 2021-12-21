@@ -70,7 +70,7 @@ const ClassDetail: React.FC<ClassDetailProps> = ({
                 <List>
                   {classDetail.proficiencies.map((prof: any, idx: number) => {
                     return (
-                      <li key={idx}>
+                      <li key={prof.name}>
                         {prof.name}
                       </li>
                     );
@@ -84,7 +84,7 @@ const ClassDetail: React.FC<ClassDetailProps> = ({
                 <List>
                   {classDetail.starting_equipment.map((equip: any, idx: number) => {
                     return (
-                      <li key={idx}>
+                      <li key={equip.equipment.name}>
                         {equip.equipment.name}
                       </li>
                     );

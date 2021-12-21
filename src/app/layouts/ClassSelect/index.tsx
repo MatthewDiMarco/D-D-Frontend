@@ -157,10 +157,10 @@ const ClassSelect: React.FC<ClassSelectLayoutProps> = () => {
     <ContainerFlexHorizontal>
       <ContainerLeft>
         <ContainerGridList>
-          {dataClasses?.classes.map((cls: ClassSnapshot, idx: number) => {
+          {dataClasses?.classes.map((cls: ClassSnapshot) => {
             return (
               <ClassCard 
-                key={idx}
+                key={cls.index}
                 propClassSnapshot={cls}
                 propSelected={selectedClassIndex === cls.index}
                 propHandleClick={(selectedIndex: string) => {
