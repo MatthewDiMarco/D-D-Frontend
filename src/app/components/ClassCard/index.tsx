@@ -6,7 +6,7 @@ import { ClassSnapshot } from '../../model/models';
 const Card = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   border-radius: 5px;
-  transition: 0.2s;
+  transition: all 0.2s;
   width: 300px;
   padding: 24px;
 
@@ -24,7 +24,7 @@ const CardClassName = styled.div`
 `
 
 const CardClassHitDue = styled.div`
-  background: #f1f1f1;
+  background: var(--color-primary);
   margin: 24px auto 32px auto;
   width: 100px;
   height: 100px;
@@ -37,7 +37,6 @@ const CardClassHitDue = styled.div`
 `
 
 const CardClassUrl = styled.div`
-  color: darkgray;
   font-size: 16px;
   margin: 8px 0 0 0;
 `
@@ -59,7 +58,7 @@ const ClassCard: React.FC<ClassCardProps> = ({
       onFocusCapture={propClassSnapshot ? () => propHandleClick(propClassSnapshot.index) : undefined} 
       onClick={propClassSnapshot ? () => propHandleClick(propClassSnapshot.index) : undefined}
       className={css`
-        background: ${propSelected ? css`#f1f1f1;` : css`0`};
+        background: ${propSelected ? css`var(--color-primary);` : css`0`};
       `}
     >
       <CardClassHitDue><p>{propClassSnapshot ? propClassSnapshot.hit_die : 0}</p></CardClassHitDue>

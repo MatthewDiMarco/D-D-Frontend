@@ -51,7 +51,9 @@ const ClassDetail: React.FC<ClassDetailProps> = ({
   customTitle
 }) => {
   return (
-    <DetailContainer>
+    <DetailContainer
+      tabIndex={0}
+    >
       {classDetail
         ? 
           <Fragment>

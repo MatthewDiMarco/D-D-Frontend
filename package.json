@@ -67,6 +67,7 @@
   "devDependencies": {
     "@cypress/react": "^5.10.3",
     "@cypress/webpack-dev-server": "^1.7.0",
+    "@storybook/addon-a11y": "^6.4.9",
     "@storybook/addon-actions": "^6.4.8",
     "@storybook/addon-essentials": "^6.4.8",
     "@storybook/addon-links": "^6.4.8",

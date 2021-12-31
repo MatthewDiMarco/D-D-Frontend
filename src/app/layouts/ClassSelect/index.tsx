@@ -137,7 +137,6 @@ const ClassSelect: React.FC<ClassSelectLayoutProps> = () => {
     data: dataDetail
   } = useQuery<GetSelectedClassDetailsResponseType>(GET_SELECTED_CLASS_DETAILS, {
     variables: { classIndex: selectedClassIndex },
-    fetchPolicy: 'no-cache'
   });
 
   const {
@@ -145,7 +144,6 @@ const ClassSelect: React.FC<ClassSelectLayoutProps> = () => {
     data: dataSpells
   } = useQuery<GetClassSpells>(GET_CLASS_SPELLS, {
     variables: { levelIndex: `${selectedClassIndex}-${selectedLevel}` },
-    fetchPolicy: 'no-cache'
   });
 
   console.log(dataSpells);

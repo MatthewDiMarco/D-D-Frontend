@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 
 const Header = styled.div`
   overflow: hidden;
-  background-color: #f1f1f1;
+  background-color: var(--color-primary);
   padding: 20px 10px;
 `
 
@@ -22,7 +22,7 @@ const Link = styled.a`
   border-radius: 4px;
 
   :hover {
-      background-color: #ddd;
+      background-color: var(--color-white);
   }
 `
 
